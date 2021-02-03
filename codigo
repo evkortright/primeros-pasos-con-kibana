@@ -1,5 +1,50 @@
 # estos son snippets de codigo
 
+# DSL para filtro de vuelas a o de Canada
+
+GET kibana_sample_data_flights/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "DestCountry": "CA"
+          }
+        },
+        {
+          "match": {
+            "OriginCountry": "CA"
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+# Aggregacion para Vega
+
+GET kibana_sample_data_flights/_search
+{
+  "size": 0,
+  "aggs": {
+    "por_dia": {
+      "date_histogram": {
+        "field": "timestamp",
+        "interval": "day"
+      },
+      "aggs": {
+        "retraso_promedio": {
+          "avg": {
+            "field": "FlightDelayMin"
+          }
+        }
+      }
+    }
+  }
+}
+
 # Vega (grafica interactiva adaptada de Vega-Lite Gallery)
 
 {
