@@ -69,6 +69,6 @@
 # Timelion
 
 .es(index=kibana_sample_data_flights,timefield=timestamp,metric=avg:FlightDelayMin,).bars().label('Retraso promedio'),
-.es(index=kibana_sample_data_flights,timefield=timestamp,metric=avg:FlightDelayMin,).bars().cusum().yaxis(2).label('Retraso promedio acumulado').title('Retraso promedio (min)')
+.es(index=kibana_sample_data_flights,timefield=timestamp,metric=avg:FlightDelayMin,).lines(fill=0.75, width=1).cusum().yaxis(2).label('Retraso promedio acumulado').title('Retraso promedio (min)')
 
 
